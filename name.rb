@@ -11,18 +11,22 @@ class Name
 
   # A method returning first_name from a given argument
   def first_name
-    @name.split('/')[1].split(' ').delete_if do |x|
-      TITLES.include?(x)
-    end.map(&:capitalize) * ' '
+    capitalize(@name.split('/')[1].split(' ').delete_if { |x| TITLES.include?(x) })
   end
 
   # A method returning family_name from a given argument
   def family_name
-    @name.split('/')[0].split.map(&:capitalize) * ' '
+    capitalize(@name.split('/')[0].split)
   end
 
   # A method returning full name in an array in format [family_name, first_name]
   def full_name(array = [])
     array << family_name << first_name
+  end
+
+  private
+
+  def capitalize(array)
+    array.map(&:capitalize).join(' ')
   end
 end
