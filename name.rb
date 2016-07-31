@@ -11,7 +11,7 @@ class Name
 
   # A method returning first_name from a given argument
   def first_name
-    capitalize(@name.split('/')[1].split(' ').delete_if { |x| TITLES.include?(x) })
+    capitalize(@name.split('/')[1].split.delete_if { |x| TITLES.include?(x) })
   end
 
   # A method returning family_name from a given argument
